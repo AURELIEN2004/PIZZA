@@ -20,10 +20,9 @@ function Contact() {
           <label htmlFor="message">Message</label>
           <textarea
             rows="6"
-            placeholder="Enter message.."
+            placeholder="Enter message..."
             name="message"
             required
-
           ></textarea>
           <button type="submit"> Send Message</button>
         </form>
