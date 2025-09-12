@@ -22,6 +22,7 @@ function Contact() {
             rows="6"
             placeholder="Enter message.."
             name="message"
+            
             required
           ></textarea>
           <button type="submit"> Send Message</button>
