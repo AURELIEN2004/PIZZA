@@ -22,7 +22,6 @@ function Contact() {
             rows="6"
             placeholder="Enter message.."
             name="message"
-
             required
 
           ></textarea>
