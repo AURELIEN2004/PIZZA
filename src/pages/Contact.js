@@ -3,6 +3,31 @@ import PizzaLeft from "../assets/pizzaLeft.jpg";
 import "../styles/Contact.css";
 
 function Contact() {
+      const [result, setResult] = React.useState("");
+
+  const onSubmit = async (event) => {
+    event.preventDefault();
+    setResult("Sending....");
+    const formData = new FormData(event.target);
+
+    formData.append("access_key", "974f9203-d46c-42e3-94ed-4d9d6c61b1b2");
+
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formData
+    });
+
+    const data = await response.json();
+
+    if (data.success) {
+      setResult("Form Submitted Successfully");
+      event.target.reset();
+    } else {
+      console.log("Error", data);
+      setResult(data.message);
+    }
+  };
+
   return (
     <div className="contact">
       <div
@@ -12,7 +37,7 @@ function Contact() {
       <div className="rightSide">
         <h1> Contact Us</h1>
 
-        <form id="contact-form" method="POST">
+        <form onSubmit={onSubmit} id="contact-form" method="POST">
           <label htmlFor="name">Full Name</label>
           <input name="name" placeholder="Enter full name..." type="text" />
           <label htmlFor="email">Email</label>
@@ -26,56 +51,15 @@ function Contact() {
           ></textarea>
           <button type="submit"> Send Message</button>
         </form>
+             <span>{result}</span>
+
       </div>
     </div>
   );
 }
 
-// export default Contact;
+ export default Contact;
 
-// import React from "react";
-// import "../styles/Contact.css";
 
-// function Contact() {
-//   const [result, setResult] = React.useState("");
 
-//   const onSubmit = async (event) => {
-//     event.preventDefault();
-//     setResult("Sending....");
-//     const formData = new FormData(event.target);
 
-//     formData.append("access_key", "974f9203-d46c-42e3-94ed-4d9d6c61b1b2");
-
-//     const response = await fetch("https://api.web3forms.com/submit", {
-//       method: "POST",
-//       body: formData
-//     });
-
-//     const data = await response.json();
-
-//     if (data.success) {
-//       setResult("Form Submitted Successfully");
-//       event.target.reset();
-//     } else {
-//       console.log("Error", data);
-//       setResult(data.message);
-//     }
-//   };
-
-//   return (
-//     <div>
-//       <form onSubmit={onSubmit}>
-//         <input type="text" name="name" required placeholder="nom"/>
-//         <input type="email" name="email" required placeholder="email"/>
-//         <textarea name="message" required placeholder="message"></textarea>
-
-//         <button type="submit">Submit Form</button>
-
-//       </form>
-//       <span>{result}</span>
-
-//     </div>
-//   );
-// }
-
-// export default Contact;
