@@ -12,7 +12,7 @@ function Footer() {
         <a href="https://facebook.com"><FaFacebook /></a>
         <a href="https://linkedin.com"><FaLinkedin /></a>
       </div>
-      <p> &copy; 2020 pedrotechpizza.com</p>
+      <p> &copy; 20201 pedrotechpizza.com</p>
     </div>
   );
 }
